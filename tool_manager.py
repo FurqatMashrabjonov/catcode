@@ -4,6 +4,9 @@ from typing import Any, Dict, List, Type
 from tools.read_file import ReadFile
 from tools.search_code import SearchCode
 from tools.run_terminal import RunTerminal
+from tools.todo import Todo
+
+MAX_OUTPUT = 3000
 
 class Tool:
     def __init__(self, workdir: Path):
@@ -13,6 +16,7 @@ class Tool:
             ReadFile,
             SearchCode,
             RunTerminal,
+            Todo
         ]
 
         self._tools = {
@@ -31,3 +35,16 @@ class Tool:
             return tool.handle(**args)
         except Exception as e:
             return f"Error executing tool '{name}': {str(e)}"
+
+    def _trim(self, name: str, result: str) -> str:
+        if len(result) <= MAX_OUTPUT:
+            return result
+
+        if name == "run_terminal":
+            lines = result.splitlines()
+            if len(lines) > 40:
+                head = "\n".join(lines[:10])
+                tail = "\n".join(lines[-20:])
+                return f"{head}\n\n[...{len(lines) - 30} lines skipped...]\n\n{tail}"
+
+        return result[:MAX_OUTPUT] + f"\n[...truncated]"
