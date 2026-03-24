@@ -27,6 +27,19 @@ class Cli:
         return Align.left(content_group)
 
     def run(self, agent):
+        cat_logo = """
+    [bold dark_orange]
+      ██     ██
+      █████████
+      █ ▄   ▄ █
+      █   ▀   █
+      █████████
+    [/bold dark_orange]
+    [bold cyan]    CatCode   [/bold cyan]
+    """
+        self.console.print(Align.center(cat_logo))
+
+        self.console.print(Align.center("[italic dim]Welcome to CatCode - Your AI coding assistant[/italic dim]\n"))
         self.console.print("[bold blue]Ctrl+C to exit.[/bold blue]\n")
 
         try:
