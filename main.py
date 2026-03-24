@@ -1,9 +1,7 @@
+from cli import Cli
 from agent import Agent
 
 agent = Agent()
+cli = Cli()
 
-while True:
-    prompt = input('You: ')
-    response, token = agent.ask(prompt)
-    print(response)
-    print("Total token usage: ", token)
+cli.run(agent)

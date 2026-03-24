@@ -9,7 +9,7 @@ class PromptManager:
 
 
     def __get_content(self, path: str):
-        file = Path(f"./prompts/{path}")
+        file = Path(f"{Path(__file__).parent.parent}/prompts/{path}")
         if not file.exists():
             raise Exception(f"{path} not exists")
 

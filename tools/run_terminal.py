@@ -9,6 +9,7 @@ class RunTerminal(BaseTool):
         Use for: running tests, installing packages, 
         git operations, creating folders, running scripts. 
         Avoid destructive commands like rm -rf, sudo, chmod.
+        Use only for local project tasks (tests, git, artisan). NEVER use for internet research.
     """
     parameters = {
         "type": "object",
@@ -18,7 +19,6 @@ class RunTerminal(BaseTool):
                 "type": "string",
                 "description": (
                     "Bash command to execute. "
-                    "e.g. 'pytest tests/ -v', 'pip install fastapi', 'git status'"
                 )
             },
             "timeout": {

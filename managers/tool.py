@@ -5,10 +5,11 @@ from tools.read_file import ReadFile
 from tools.search_code import SearchCode
 from tools.run_terminal import RunTerminal
 from tools.todo import Todo
+from tools.compact import Compact
 
 MAX_OUTPUT = 3000
 
-class Tool:
+class ToolManager:
     def __init__(self, workdir: Path):
         self.workdir = workdir
         
@@ -16,14 +17,15 @@ class Tool:
             ReadFile,
             SearchCode,
             RunTerminal,
-            Todo
+            Todo,
+            Compact
         ]
 
         self._tools = {
             cls.name: cls(workdir=self.workdir) for cls in tool_classes
         }
 
-    def get_tools(self) -> List[Dict[str, Any]]:
+    def get_tools(self) -> List:
         return [tool.to_llm() for tool in self._tools.values()]
 
     def run(self, name: str, args: Dict[str, Any]) -> str:

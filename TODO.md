@@ -3,3 +3,4 @@
 2. compactni full implement qilish
 3. live coding uchun gemin live native audio implement
 4. [gemini chat](https://gemini.google.com/u/1/app/ec07aec3ea64542a?_gl=1*2nnnlp*_gcl_au*ODc5NzA5NDgzLjE3NjU3NzY4NTY.&pageId=none)
+5. Add providers architecture and use gemini as first provider [in_progress]
